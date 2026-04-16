@@ -4,6 +4,9 @@ Monitor SEC EDGAR for new Form D filings from US tech companies and alert on
 interesting ones. Form D is filed within 15 days of first sale; EDGAR publishes
 immediately — this tool catches funding rounds before they hit the news.
 
+<img width="1457" height="873" alt="image" src="https://github.com/user-attachments/assets/4e46fe90-719d-4e68-994a-5ca129d6b552" />
+
+
 ## Install
 
 ```bash
