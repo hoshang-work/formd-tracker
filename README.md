@@ -23,6 +23,28 @@ python main.py serve       # open http://127.0.0.1:8000
 That's it. To also poll for new filings every 30 min, open a second terminal
 and run `python main.py run` from the same directory.
 
+## Run with Docker
+
+If you have Docker, skip the venv entirely:
+
+```bash
+docker run -p 8000:8000 -v formd_data:/data \
+  -e EDGAR_USER_AGENT="Your Name your@email.com" \
+  ghcr.io/githnm/formd-tracker:latest
+```
+
+The DB persists in the named volume `formd_data` across restarts. UI at
+http://127.0.0.1:8000.
+
+To seed the DB with a backfill before serving (one-time):
+
+```bash
+docker run --rm -v formd_data:/data \
+  -e EDGAR_USER_AGENT="Your Name your@email.com" \
+  ghcr.io/githnm/formd-tracker:latest \
+  python main.py backfill --days 7
+```
+
 ## Configure
 
 `config.yaml` controls polling interval, filters, and alerts. Defaults are

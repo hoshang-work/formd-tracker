@@ -78,7 +78,7 @@ class AppContext:
         if env_webhook:
             alerts_cfg["webhook_url"] = env_webhook
 
-        db_path = (cfg.get("storage") or {}).get("db_path", "form_d.sqlite")
+        db_path = os.environ.get("DB_PATH") or (cfg.get("storage") or {}).get("db_path", "form_d.sqlite")
 
         try:
             client = EdgarClient(user_agent=user_agent)
